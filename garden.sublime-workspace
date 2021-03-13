@@ -1,0 +1,287 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"Basic Builder - PdfLaTeX"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mdelano1/digital-garden"
+	],
+	"file_history":
+	[
+		"/Users/mdelano1/digital-garden/Gemfile",
+		"/Users/mdelano1/digital-garden/_config.yml",
+		"/Users/mdelano1/digital-garden/_layouts/note.html",
+		"/Users/mdelano1/digital-garden/_includes/notes_graph.html",
+		"/Users/mdelano1/digital-garden/_includes/notes_graph.html.bak",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 21/Labs/Intro to Verilog/introVerilog.tex",
+		"/Users/mdelano1/Library/Application Support/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 21/Labs/Lab 2 - Multiply and Divide/fpa.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 21/Labs/Lab 2 - Multiply and Divide/lab2.tex",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 5/v files/Add_rca_32.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 5/v files/Add_rca_16.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 5/v files/Add_rca_4.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 7/multiplier_32.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 5/v files/compare_2_RTL.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 5/v files/full_adder.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 6/multiplier_32.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Reference Material/Hannah's E25_CS52/Lab 6/OLD/multiplier_32.v",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/T3.txt",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/T2.txt",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/T1.txt",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/Cals/cal3.txt",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/Cals/cal2.txt",
+		"/Users/mdelano1/Google Drive/1 - Projects/Current Source Testing/Data 03_04_21/Cals/cal1.txt",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 21/Labs/Lab 1 - Sort/quicksortMySol.asm",
+		"/Users/mdelano1/Downloads/quicksort.asm",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Verilog/lab2 Erik/bcd2seven.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Verilog/lab2 Erik/BCD.v",
+		"/Users/mdelano1/Google Drive/2 - Areas/4 - Teaching/Courses/E25/SP 19/Verilog/cylon/E15Counter1HzB.v"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 108.0
+	},
+	"pinned_build_system": "",
+	"project": "garden.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
