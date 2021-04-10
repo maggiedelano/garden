@@ -1,1 +1,1 @@
-Sitemap: /garden/sitemap.xml
+Sitemap: https://www.maggiedelano.com/garden/sitemap.xml
