@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+
+  <link rel="canonical" href="https://www.maggiedelano.com/syntopical-reading-in-roam" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="OverviewIn the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You...">
+
+  <meta property="og:site_name" content="Maggie Delano's Digital Garden">
+
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo=">
+
+  <link rel="stylesheet" href="/garden/styles.css">
+
+  
+  <meta property="og:description" content="OverviewIn the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You..."/>
+  
+
+  
+  <meta property="og:title" content="Syntopical Reading in Roam">
+  <meta property="og:type" content="article">
+  
+
+  
+  <meta property="article:published_time" content="2022-02-22T23:19:54-05:00">
+  <meta property="article:author" content="https://www.maggiedelano.com/">
+  
+
+  <meta property="og:url" content="https://www.maggiedelano.com/syntopical-reading-in-roam" />
+
+  
+
+  <title>
+    
+      Syntopical Reading in Roam &mdash; Maggie Delano's Digital Garden
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Syntopical Reading in Roam | Maggie Delano’s Digital Garden</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Syntopical Reading in Roam" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind." />
+<meta property="og:description" content="Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind." />
+<link rel="canonical" href="https://www.maggiedelano.com/garden/syntopical-reading-in-roam" />
+<meta property="og:url" content="https://www.maggiedelano.com/garden/syntopical-reading-in-roam" />
+<meta property="og:site_name" content="Maggie Delano’s Digital Garden" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-22T23:19:54-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Syntopical Reading in Roam" />
+<meta name="twitter:site" content="@maggied" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam"},"url":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam","headline":"Syntopical Reading in Roam","dateModified":"2022-02-22T23:19:53-05:00","datePublished":"2022-02-22T23:19:54-05:00","description":"Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+  <body>
+    <nav><div>
+    <a class="internal-link" href="/garden/"><b>Maggie Delano's Digital Garden</b></a>
+</div>
+</nav>
+    <div class="wrapper">
+      <main><article>
+  <div>
+    <h1>Syntopical Reading in Roam</h1>
+    <time datetime="2022-02-22T23:19:53-05:00">
+      Last updated on February 22, 2022
+      
+    </time>
+  </div>
+
+  <div id="table-of-contents">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h1"><a href="#introduction-to-synoptical-reading">Introduction to Synoptical Reading</a></li>
+<li class="toc-entry toc-h1"><a href="#implementing-syntopical-reading-tool-agnostic">Implementing Syntopical Reading (Tool Agnostic)</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#inspectional-reading">Inspectional Reading</a></li>
+<li class="toc-entry toc-h2"><a href="#choosing-a-top-level-question">Choosing a Top Level Question</a></li>
+<li class="toc-entry toc-h2"><a href="#selecting-passages-coming-to-terms-getting-the-questions-clear">Selecting Passages, Coming to Terms, Getting the Questions Clear</a></li>
+<li class="toc-entry toc-h2"><a href="#defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the issues, Analyzing the Discussion, and Generating Our Own Ideas</a></li>
+<li class="toc-entry toc-h2"><a href="#producing-output">Producing Output</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#implementing-syntopical-reading-roam-workflow">Implementing Syntopical Reading (Roam Workflow)</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#inspectional-reading-template">Inspectional Reading Template</a></li>
+<li class="toc-entry toc-h2"><a href="#organizing-questions-passages-terms-and-propositions">Organizing Questions, Passages, Terms, and Propositions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#example-template">Example Template</a></li>
+<li class="toc-entry toc-h3"><a href="#example-template-partially-filled-in">Example Template, Partially Filled In</a></li>
+<li class="toc-entry toc-h3"><a href="#question-template">Question Template</a></li>
+<li class="toc-entry toc-h3"><a href="#term-template">Term Template</a></li>
+<li class="toc-entry toc-h3"><a href="#proposition-template">Proposition Template</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#the-hivemind-creating-a-group-zettelkasten">The Hivemind: Creating A Group Zettelkasten</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#lessons-learned-and-looking-forward">Lessons Learned and Looking Forward</a></li>
+<li class="toc-entry toc-h1"><a href="#acknowledgements">Acknowledgements</a></li>
+<li class="toc-entry toc-h1"><a href="#footnotes">Footnotes</a></li>
+</ul>
+  </div>
+
+  <div id="notes-entry-container">
+    <content>
+      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1 id="overview">Overview</h1>
+<p>In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of <a href="https://www.calnewport.com/books/so-good/" target="_blank">So Good They Can’t Ignore You</a> by Cal Newport and <a href="https://davidepstein.com/the-range/" target="_blank">Range</a> by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in <a class="internal-link" href="/garden/roam-research">Roam Research</a>. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.</p>
+
+<h1 id="introduction-to-synoptical-reading">Introduction to Synoptical Reading</h1>
+<p>There are a lot of reasons why people read books and join book clubs, including for entertainment, to learn something, and to answer your own questions (i.e. research of some kind). Each reason calls for a different approach to reading and writing about the book. Where most book clubs focus on reading for fun or to learn something from the author, this book club focused on a technique called syntopical reading to help us use our two books to answer our own questions. The two books (<em>So Good They Can’t Ignore You</em> and <em>Range</em>) were chosen after I listened to a <a href="https://www.buzzsprout.com/1121972/6035176" target="_blank">podcast</a> by the two authors where they talk about how many people think their ideas about having a successful career are contradictory, but that they themselves see synergies. It seemed like a great way to try our hand at evaluating each book and using each book to answer our own questions.</p>
+
+<p>The workflow for syntopical reading is described in Chapter 20 of <a href="https://en.wikipedia.org/wiki/How_to_Read_a_Book" target="_blank">How To Read A Book</a> by Mortimer J. Adler and Charles Van Doren. I adapted this workflow for use in RBC. The steps of syntopical reading included:</p>
+
+<ul>
+  <li>selecting a bibliography (in this case, our two books)</li>
+  <li>reading all the texts inspectionally (systematic skimming)</li>
+  <li>selecting passages related to topic of interest</li>
+  <li>coming to terms with the author</li>
+  <li>getting the questions clear</li>
+  <li>defining the issues between the passages/authors</li>
+  <li>analyzing the resulting discussion</li>
+  <li>generating your own ideas based on what you’ve learned</li>
+  <li>producing output based on your ideas</li>
+</ul>
+
+<p>I recommend reading <em>How To Read A Book</em> itself if you want to learn more about each of these steps, as this post is long enough only focusing on implementation. If you are not able to read the book or prefer a quick overview, the Farnam Street Blog also has a pretty good <a href="https://fs.blog/how-to-read-a-book/" target="_blank">summary</a> of the book.</p>
+
+<h1 id="implementing-syntopical-reading-tool-agnostic">Implementing Syntopical Reading (Tool Agnostic)</h1>
+
+<p>Syntopical reading can be readily implemented in any personal knowledge management system. This section walks through an overview of how each of the steps were conducted, and in the next one I’ll show some specifics of the implementation of syntopical reading in Roam Research.</p>
+
+<h2 id="inspectional-reading">Inspectional Reading</h2>
+<p>When I first heard about inspectional reading I assumed it was just a fancy word for skimming, but it’s actually an incredibly powerful tool when used in a systematic way. It can be used to get a quick sense of a text and whether it might be relevant to your research topic. I designed daily writing prompts that guided RBC members through the inspectional reading phase, where members completed the following tasks for each book:</p>
+<ul>
+  <li>Looking at the title page, and, if the book has one, at its preface</li>
+  <li>Studying the table of contents</li>
+  <li>Checking the index</li>
+  <li>Reading the publisher’s blurb</li>
+  <li>Looking at the chapters that seem to be pivotal to its argument</li>
+  <li>Turning the pages, dipping in here and there, reading a paragraph or two, sometimes several pages in sequence, never more than that</li>
+  <li>Summarizing each chapter and the book as a whole from this short reading</li>
+  <li>Answering what the overall structure of the book is, who the book is for, what the main ideas are, and what might have resonated that might be of future interest</li>
+</ul>
+
+<p>We began with inspecting each book before each person knew exactly what they might be interested in exploring further, which is a little different than how one might implement this for research purposes. We also limited our reading to two books due to time constraints for the book club. However, even when working on one’s own there will always be some tension between understanding what one wants to research and needing to read to refine the topic. This is a paradox that the authors of <em>How To Read A Book</em> say we will just have to accept and iterate on as we inspect further sources.</p>
+
+<h2 id="choosing-a-top-level-question">Choosing a Top Level Question</h2>
+<p>After the inspectional reading was completed, RBC members were encouraged to brainstorm a “top level question” that they were interested in exploring for the rest of the book club. Though the authors of <em>How To Read A Book</em> focus on a “topic” for syntopical reading, I thought it made more sense to have a question to focus on as it forces you to refine your thinking a bit. Top level questions were things that could feasibly be answered (at least in part) by both books. My question, for example, was: “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?” This brainstorming doesn’t require any particular tool to conduct; you can free-write, list ideas with bullet points, use a mind mapping tool, go for a walk and record your ideas, etc.</p>
+
+<h2 id="selecting-passages-coming-to-terms-getting-the-questions-clear">Selecting Passages, Coming to Terms, Getting the Questions Clear</h2>
+<p>Once a top level question has been identified, it’s time to prepare to read sections of the books in more detail. RBC members used their summarizations from the inspectional reading part, and additional skimming, to try to narrow down a few different passages to do a deeper reading of. They also identified and defined terms from the text or that they already knew that might be relevant. Examples included things like career capital, deliberate practice, and analogical thinking. Finally, each member identified supporting sub-questions, the answers to which would help support their “top-level” question. For example, for the question “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?”, sub-questions would include things like “What should someone just starting out in their career focus on?” or “What are some advantages of a liberal arts education?” Passages, terms, and questions can all be recorded and organized in any note taking system, but it helps if there’s clear ways to follow links between ideas.</p>
+
+<h2 id="defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the issues, Analyzing the Discussion, and Generating Our Own Ideas</h2>
+<p>After the passages, terms, and questions have been selected, it’s time to do a deeper reading of each passage. The first step here is to take notes on the key arguments of each of the chapters, expressed as propositions (i.e. declarative statements or claims). For example, a proposition from Chapter 2 of <em>Range</em> might be “Anyone who wants a knowledge-career they love should get broad training.”</p>
+
+<p>Next, after you have a set of propositions, you want to answer your sub-questions using the propositions you’ve generated from each author. Compare how each author would answer the given sub-question, and then evaluate whether what the different authors are saying is (in)compatible with one another or not. If they disagree, where do they disagree? Using this information, you can generate your own ideas and conclusions, choosing to agree with one or more of the authors or even constructing a synthesis or totally new idea based on what you’ve read.</p>
+
+<p>As you answer each sub-question, you will learn more about your topic of interest, and can refine your passages, terms, and questions accordingly as you move toward answering your top-level question.</p>
+
+<h2 id="producing-output">Producing Output</h2>
+<p>At this stage, you will have a set of questions with answers. Depending on what you want to do with the answer to your top-level question, you could stop here. But writing down your ideas and communicating them with someone else is not only an excellent way to challenge your own thinking, it allows you to use what you’ve learned in a meaningful way. For example, both [myself]((https://www.maggiedelano.com/garden/unsolicited-career-advice) and RBC organizer <a href="https://katefoy.com/keep-your-hook-baited/" target="_blank">Kate Foy</a> decided to write blog posts about our findings.</p>
+
+<p>Going from an outline in Roam/your note taking app to writing in prose also forces you to come up with supporting evidence, examples, and transitions between your ideas. I’ve found that the process of going from outliner to prose and back to outline can be very helpful in producing this sort of output.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">1</a></sup></p>
+
+<h1 id="implementing-syntopical-reading-roam-workflow">Implementing Syntopical Reading (Roam Workflow)</h1>
+
+<p>RBC members implemented the syntopical reading workflow over the course of several weeks using both daily writing prompts and weekly reading/writing assignments. In this section, I’ll provide templates you can use in Roam that are lightly adapted from the book club and designed to be used at your own pace in your own graph.</p>
+
+<h2 id="inspectional-reading-template">Inspectional Reading Template</h2>
+
+<ul>
+  <li>To conduct an inspectional reading, take the following steps, and answer the questions in the next block:
+    <ul>
+      <li>Look at the title page, and, if the book has one, at its preface</li>
+      <li>Study the table of contents</li>
+      <li>Check the index</li>
+      <li>Read the epigraph</li>
+      <li>Read the publisher’s blurb</li>
+      <li>Look at the chapters that seem to be pivotal to its argument</li>
+      <li>Skim the book from front to back, dipping in here and there, reading a paragraph or two, sometimes several pages in sequence, never more than that</li>
+    </ul>
+  </li>
+  <li>As you complete the above steps, answer the following questions:
+    <ul>
+      <li>What is the structure of the book?</li>
+      <li>Who do you think the book was written for?</li>
+      <li>What are the main ideas covered in the book?</li>
+      <li>What resonated with you as you skimmed the book?</li>
+      <li>What questions did the book bring up for you?</li>
+      <li>What words came up that might be terms?</li>
+      <li>(Optional) write a short summary (1-2 sentences) of each chapter of the book</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="organizing-questions-passages-terms-and-propositions">Organizing Questions, Passages, Terms, and Propositions</h2>
+<p>After inspectional reading, a top level question is chosen, then passages, terms and sub-questions are selected. Finally, propositions are written up for each reading and then used to answer the sub-questions. Roam can be structured to keep track of all of this like the examples below (the first one is a general skeleton, and the second is one partially populated from my actual notes):</p>
+
+<h3 id="example-template">Example Template</h3>
+<p>Templates in Roam are focused around indentation under the main Questions page reference as the parent, followed by top level questions, and then sub-questions, terms, and passages. Sub-questions, terms, and passages all have relevant information nested under them as well. The passages section is used to take notes on the reading, including a Personal respond to reading (like fleeting notes from <a href="https://takesmartnotes.com/" target="_blank">How To Take Smart Notes</a>), Summary (like literature notes), and Propositions (claims or permanent notes).</p>
+
+<ul>
+  <li>[[Questions]]
+    <ul>
+      <li>[insert top level question 1 here]
+        <ul>
+          <li>sub-questions
+            <ul>
+              <li>[insert subquestions here]</li>
+            </ul>
+          </li>
+          <li>[[Terms]]
+            <ul>
+              <li>[insert terms and definitions here]</li>
+            </ul>
+          </li>
+          <li>[[Passages]]
+            <ul>
+              <li>[text]
+                <ul>
+                  <li>[chapter]
+                    <ul>
+                      <li>[[Personal response to reading]]
+                        <ul>
+                          <li>…</li>
+                        </ul>
+                      </li>
+                      <li>[[Summary]]
+                        <ul>
+                          <li>[[Terms]]
+                            <ul>
+                              <li>…</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>[[Propositions]]
+                        <ul>
+                          <li>…</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>(optional, add additional top level questions)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="example-template-partially-filled-in">Example Template, Partially Filled In</h3>
+<p>Here is an example of what a template might look like filled in, with some content omitted due to the levels of indentation and for brevity.</p>
+
+<ul>
+  <li>[[Q/How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?]]
+    <ul>
+      <li>sub-questions:
+        <ul>
+          <li>Early careers
+            <ul>
+              <li>[[Q/What should someone just starting out in their career focus on?]]
+                <ul>
+                  <li>[[So Good They Can’t Ignore You]]:
+                    <ul>
+                      <li>[[P/Anyone early in their career who wants a successful career should focus on building rare and valuable skills]]
+                        <ul>
+                          <li>how?
+                            <ul>
+                              <li>[[P/anyone who wants a knowledge-career they love should first learn how to find the deep structure of a domain]]</li>
+                              <li>[[P/anyone who will have to find the deep structure underlying one domain and apply it to a novel domain should get broad training]]</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>[[Range]]:
+                    <ul>
+                      <li>[[P/Anyone early in their career who wants a successful career should sample widely]]</li>
+                      <li>[[P/Anyone early in their career what wants a successful career should focus on skills that can be applied across domains]]</li>
+                    </ul>
+                  </li>
+                  <li>Synthesis
+                    <ul>
+                      <li>[[P/Liberal arts students who want a knowledge-career they love should use their four years to sample different domains and build rare and valuable skills across disciplines]]
+                        <ul>
+                          <li>Why should they do that?
+                            <ul>
+                              <li>[[P/anyone who wants a knowledge-career they love will have to function well in a wicked world]]
+                                <ul>
+                                  <li>why?</li>
+                                </ul>
+                              </li>
+                              <li>[[P/anyone who will have to function well in a wicked world will have to solve novel problems]]</li>
+                              <li>[[P/anyone who will have to solve novel problems will have to find the deep structure underlying one domain and apply it to a novel domain]]
+                                <ul>
+                                  <li>how to find the deep structure underlying one domain?
+                                    <ul>
+                                      <li>[[P/Anyone who wants to find the deep structure underlying one domain should learn a field well enough to get to the adjacent possible]]
+                                        <ul>
+                                          <li>how?
+                                            <ul>
+                                              <li>[[P/Anyone early in their career who wants a successful career should focus on building rare and valuable skills]]</li>
+                                              <li>[[P/anyone who should get valuable skills should engage in deliberate practice]]</li>
+                                            </ul>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>how to apply that training to a novel domain?
+                                    <ul>
+                                      <li>[[P/anyone who will have to find the deep structure underlying one domain and apply it to a novel domain should get broad training]]</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>[[Terms]]
+        <ul>
+          <li>[[T/successful career]]: a career you love</li>
+          <li>[[T/Ikigai]]: “a reason for being” combining what you are good at, what you love, what you can be paid for, and what the world needs</li>
+          <li>[[T/career capital]]: skills that you have that are rare and valuable</li>
+          <li>[[T/wicked environments]]: environments where the “rules of the game” are unclear and incomplete</li>
+          <li>[[T/lateral thinking]]: using existing information in new contexts</li>
+          <li>general engineering degree: a degree that does not involve taking more than 2-4 elective, upper level undergraduate courses in a given sub-discipline of engineering (e.g. mechanical, computer, electrical, chemical)</li>
+          <li>[[T/liberal arts education]]: a degree from a four year institution where the students are required to take almost half of their courses outside their major</li>
+        </ul>
+      </li>
+      <li>[[Passages]]
+        <ul>
+          <li>[[Range]]
+            <ul>
+              <li>[[Chapter 2: How the Wicked World Was Made]]
+                <ul>
+                  <li>[[Personal response to reading]]</li>
+                  <li>[[Summary]]
+                    <ul>
+                      <li>[[Terms]]
+                        <ul>
+                          <li>[[T/the Flynn effect]]</li>
+                          <li>[[T/abstraction]]</li>
+                          <li>…</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>[[Propositions]]
+                    <ul>
+                      <li>…</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>[[So Good They Can’t Ignore You]]
+            <ul>
+              <li>[[Chapter Five: The Power of Career Capital]]
+                <ul>
+                  <li>[[Personal response to reading]]</li>
+                  <li>[[Summary]]</li>
+                  <li>[[Propositions]]
+                    <ul>
+                      <li>…</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="question-template">Question Template</h3>
+<p>Each question page with the <code class="language-plaintext highlighter-rouge">Q/</code> namespace had an optional template that could be applied that looks like this:</p>
+<ul>
+  <li>Tags:: #Questions
+    <ul>
+      <li>First added by:: [insert your name here]</li>
+      <li>First added on:: [insert link to today’s daily notes page here]</li>
+      <li>Passages::
+        <ul>
+          <li>[name 1]
+            <ul>
+              <li>[name 1’s passages related to this question]</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Source:: [insert where the question came from (a book, yourself, etc.)]</li>
+      <li>Related:: [insert related terms, questions, or propositions under here]</li>
+    </ul>
+  </li>
+  <li>Discussion:: (tag w/ date please!)
+    <ul>
+      <li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="term-template">Term Template</h3>
+<p>Each term page with the <code class="language-plaintext highlighter-rouge">T/</code> namespace had an optional template that could be applied that looks like this:</p>
+
+<ul>
+  <li>Tags:: #Terms
+    <ul>
+      <li>First added by:: [insert your name here]</li>
+      <li>First added on:: [insert link to today’s daily notes page here]</li>
+      <li>Definition::
+        <ul>
+          <li>[name 1]
+            <ul>
+              <li>[name 1’s definition]</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Source:: [insert where the term came from (a book, yourself, etc.)]</li>
+      <li>Related:: [insert related terms, questions, or propositions under here]</li>
+    </ul>
+  </li>
+  <li>Discussion:: (tag w/ date please!)
+    <ul>
+      <li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="proposition-template">Proposition Template</h3>
+<p>Each proposition page with the <code class="language-plaintext highlighter-rouge">P/</code> namespace had an optional template that could be applied that looks like this:</p>
+
+<ul>
+  <li>Tags:: #Propositions
+    <ul>
+      <li>First added by:: [insert your name here]</li>
+      <li>First added on:: [insert link to today’s daily notes page here]</li>
+      <li>Source:: [insert where the proposition came from (a book, yourself, etc.)]</li>
+      <li>Related:: [insert related terms, questions, or propositions under here]</li>
+    </ul>
+  </li>
+  <li>Discussion:: (tag w/ date please!)
+    <ul>
+      <li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-hivemind-creating-a-group-zettelkasten">The Hivemind: Creating A Group Zettelkasten</h2>
+<p>Part of the beauty of using questions, terms, and propositions with fixed templates is that now a group zettelkasten can be created for everyone in the book club to benefit from the notes of others. RBC members who were interested in participating used the namespaces <code class="language-plaintext highlighter-rouge">T/</code>, <code class="language-plaintext highlighter-rouge">Q/</code> or <code class="language-plaintext highlighter-rouge">P/</code> before pages with terms, questions, or propositions, respectively to indicate the contents (e.g. <code class="language-plaintext highlighter-rouge">[[T/fermi thinking]]</code>) and that they were willing to share their work with the broader group. Then, I wrote <a href="https://github.com/maggiedelano/roambookclub/blob/main/getMissingNotes.js" target="_blank">custom code</a> to query for all pages within the appropriate name space and manually populated index pages that organized all the terms, questions, and propositions for easy browsing.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">2</a></sup></p>
+
+<p>Each of the pages had a discussion section that members could use to communicate with each other. It was very cool to get to see what everyone’s questions were, and how many different terms wound up meaning close to the same thing. The Hivemind is definitely something RBC wants to explore in the future.</p>
+
+<p>Here’s what part of the Question Index page looked like:</p>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FRBC-Public-Website%2F7v-mFuFr3c.png?alt=media&amp;token=c4995ec7-f835-4745-b176-70d4ec2ae91d" alt="|300"></p>
+<h1 id="lessons-learned-and-looking-forward">Lessons Learned and Looking Forward</h1>
+<p>I learned a ton running this book club, including deepening my understanding of <em>How To Read A Book</em>, improving my syntopical reading workflow (which has been very helpful in my work and other research endeavors), and learning how to bring people together and how much value there is in learning in community with others. The process of inspectional reading feels like a super power once you start learning to implement it, especially in the context of research projects where the syntopical reading workflow helps you articulate specific questions you have. You can use inspectional reading to quickly hone in on those works and passages that are most relevant to your question, and it helps you from reading endlessly without considering the relevance to your research goals. The Hivemind allows each individual person to focus on questions that interest them, fleshing out terms and propositions as they answer them. Individuals can also easily contribute to the knowledge of others by suggesting passages, terms, or propositions for others’ questions. Populating index pages helps identify common themes and connections, and allows for easy “entry points” into the Hivemind. We are continuing to refine the Hivemind in future iterations of RBC, and I’ll be excited to see where we run with it.</p>
+
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>Thank you to everyone who helped organize and participated in this RBC, including Matt McKinlay, Mike Kramer, Kate Foy, Vincent Tam, Matt Brockwell, Chinarut Ruangchotvit, Naomi Peck, Brian Arrigo, Grigori Milov, Lindsey Johnston, Andy Henson, Beverly Hall, Jason Kleinberg, and many more.</p>
+
+<h1 id="footnotes">Footnotes</h1>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:2" role="doc-endnote">
+      <p>If you are interested in this workflow you can check out a <a href="https://www.loom.com/share/bd635c2a394a409a9148812b642beed8" target="_blank">Loom video</a> I recorded during the book club that discusses how I go back and forth between an outline in Roam to prose in <a href="https://obsidian.md/" target="_blank">Obsidian</a> as I write. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:1" role="doc-endnote">
+      <p>Advanced roam users may be wondering why I used namespaces and custom code for the Hivemind instead of using compound page titles like [[[[QUE]] - What does it mean to live a meaningful life?]]. I did it for several reasons. On the Roam end, namespaces can be removed from the interface for easier reading and are less ugly than compound pages, and they are easier to type. Namespaces are also compatible with export to other tools like <a href="https://obsidian.md/" target="_blank">Obsidian</a> because all the files in a namespace are exported to a single folder, and Obsidian cannot handle compound page titles. I nest metadata under tags in the template to ensure that said data can be queried if desired. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+</body></html>
+
+    </content>
+
+    <side style="font-size: 0.9em">
+      <h3 style="margin-bottom: 1em">Notes mentioning this note</h3>
+      
+
+      <div style="font-size: 0.9em">
+        <p>
+          There are no notes linking to this note.
+        </p>
+      </div>
+      
+    </side>
+  </div>
+</article>
+
+<hr>
+
+<p>Here are all the notes in this garden, along with their links, visualized as a graph.</p>
+
+<style>
+  .links line {
+    stroke: #ccc;
+    opacity: 0.5;
+  }
+
+  .nodes circle {
+    cursor: pointer;
+    fill: #8b88e6;
+    transition: all 0.15s ease-out;
+  }
+
+  .text text {
+    cursor: pointer;
+    fill: #333;
+    text-shadow: -1px -1px 0 #fafafabb, 1px -1px 0 #fafafabb, -1px 1px 0 #fafafabb, 1px 1px 0 #fafafabb;
+  }
+
+  .nodes [active],
+  .text [active] {
+    cursor: pointer;
+    fill: black;
+  }
+
+  .inactive {
+    opacity: 0.1;
+    transition: all 0.15s ease-out;
+  }
+
+  #graph-wrapper {
+    background: #fcfcfc;
+    border-radius: 4px;
+    height: auto;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"
+  integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg=="
+  crossorigin="anonymous"></script>
+
+<div id="graph-wrapper">
+  <script>
+    const MINIMAL_NODE_SIZE = 8;
+    const MAX_NODE_SIZE = 12;
+    const ACTIVE_RADIUS_FACTOR = 1.5;
+    const STROKE = 1;
+    const FONT_SIZE = 16;
+    const TICKS = 200;
+    const FONT_BASELINE = 40;
+    const MAX_LABEL_LENGTH = 50;
+
+    const graphData = {"edges":[{"source":"3382923595264944459053140","target":"35785895735030"},{"source":"83980740473741404","target":"75519512887172167793552"},{"source":"4264560724020553976","target":"75519512887172167793552"},{"source":"83980740473741404","target":"81626248081932234102743"},{"source":"83980740473741404","target":"48598160581454072"},{"source":"4264560724020553976","target":"48598160581454072"},{"source":"75519512887172167793552","target":"83980740473741404"},{"source":"81626248081932234102743","target":"83980740473741404"},{"source":"48598160581454072","target":"83980740473741404"},{"source":"3738869998546123535","target":"83980740473741404"},{"source":"4264560724020553976","target":"83980740473741404"},{"source":"48598160581454072","target":"3738869998546123535"},{"source":"83980740473741404","target":"3738869998546123535"},{"source":"4264560724020553976","target":"3738869998546123535"},{"source":"81626248081932234102743","target":"4264560724020553976"},{"source":"48598160581454072","target":"4264560724020553976"},{"source":"83980740473741404","target":"4264560724020553976"},{"source":"3738869998546123535","target":"4264560724020553976"},{"source":"48598160581454072","target":"4578679678735461989859"},{"source":"81626248081932234102743","target":"3642613618311825137"},{"source":"48598160581454072","target":"3642613618311825137"},{"source":"3738869998546123535","target":"3642613618311825137"},{"source":"4264560724020553976","target":"3642613618311825137"},{"source":"501759930629953253551110097459966654","target":"3642613618311825137"},{"source":"82936483322276","target":"3642613618311825137"},{"source":"317603515401676197658131903166","target":"3642613618311825137"},{"source":"83980740473741404","target":"82936483322276"},{"source":"501759930629953253551110097459966654","target":"531179896518317482849376723342341022"}],"nodes":[{"id":"342448303611429250356031845664485098319048","path":"/garden/broader-impacts-at-neurips-2020","label":"Broader Impacts at NeurIPS 2020"},{"id":"35785895735030","path":"/garden/contact-me","label":"Contact Me"},{"id":"3382923595264944459053140","path":"/garden/favorite-problems","label":"Favorite Problems"},{"id":"2290959712372494700","path":"/garden/helpful-books","label":"Helpful Books"},{"id":"15073327635460299847868890644548652117623","path":"/garden/inclusive-engineering-design","label":"Inclusive Engineering Design"},{"id":"75519512887172167793552","path":"/garden/capture-workflow","label":"Capture Workflow"},{"id":"81626248081932234102743","path":"/garden/daily-reflection","label":"Daily Reflection"},{"id":"48598160581454072","path":"/garden/daily-review","label":"Daily Review"},{"id":"83980740473741404","path":"/garden/my-workflows","label":"My Workflows"},{"id":"3738869998546123535","path":"/garden/semester-plan","label":"Semester Plan"},{"id":"4264560724020553976","path":"/garden/weekly-review","label":"Weekly Review"},{"id":"1540914265625259245170472890527046506037737803638984","path":"/garden/obsidian-vs-roam-for-running-book-clubs","label":"Obsidian vs. Roam For Running Book Clubs"},{"id":"4578679678735461989859","path":"/garden/quantified-self","label":"Quantified Self"},{"id":"3642613618311825137","path":"/garden/roam-research","label":"Roam Research"},{"id":"501759930629953253551110097459966654","path":"/garden/syntopical-reading-in-roam","label":"Syntopical Reading in Roam"},{"id":"233959746474886049326429588","path":"/garden/teaching-resources","label":"Teaching Resources"},{"id":"82936483322276","path":"/garden/tech-stack","label":"Tech Stack"},{"id":"531179896518317482849376723342341022","path":"/garden/unsolicited-career-advice","label":"Unsolicited Career Advice"},{"id":"317603515401676197658131903166","path":"/garden/using-custom-js-in-roam","label":"Using Custom JS in Roam"}]}
+    let nodesData = graphData.nodes;
+    let linksData = graphData.edges;
+
+    const nodeSize = {};
+
+    const updateNodeSize = () => {
+      nodesData.forEach((el) => {
+        let weight =
+          3 *
+          Math.sqrt(
+            linksData.filter((l) => l.source === el.id || l.target === el.id)
+              .length + 1
+          );
+        if (weight < MINIMAL_NODE_SIZE) {
+          weight = MINIMAL_NODE_SIZE;
+        } else if (weight > MAX_NODE_SIZE) {
+          weight = MAX_NODE_SIZE;
+        }
+        nodeSize[el.id] = weight;
+      });
+    };
+
+    const onClick = (d) => {
+      window.location = d.path
+    };
+
+    const onMouseover = function (d) {
+      const relatedNodesSet = new Set();
+      linksData
+        .filter((n) => n.target.id == d.id || n.source.id == d.id)
+        .forEach((n) => {
+          relatedNodesSet.add(n.target.id);
+          relatedNodesSet.add(n.source.id);
+        });
+
+      node.attr("class", (node_d) => {
+        if (node_d.id !== d.id && !relatedNodesSet.has(node_d.id)) {
+          return "inactive";
+        }
+        return "";
+      });
+
+      link.attr("class", (link_d) => {
+        if (link_d.source.id !== d.id && link_d.target.id !== d.id) {
+          return "inactive";
+        }
+        return "";
+      });
+
+      link.attr("stroke-width", (link_d) => {
+        if (link_d.source.id === d.id || link_d.target.id === d.id) {
+          return STROKE * 4;
+        }
+        return STROKE;
+      });
+      text.attr("class", (text_d) => {
+        if (text_d.id !== d.id && !relatedNodesSet.has(text_d.id)) {
+          return "inactive";
+        }
+        return "";
+      });
+    };
+
+    const onMouseout = function (d) {
+      node.attr("class", "");
+      link.attr("class", "");
+      text.attr("class", "");
+      link.attr("stroke-width", STROKE);
+    };
+
+    const sameNodes = (previous, next) => {
+      if (next.length !== previous.length) {
+        return false;
+      }
+
+      const map = new Map();
+      for (const node of previous) {
+        map.set(node.id, node.label);
+      }
+
+      for (const node of next) {
+        const found = map.get(node.id);
+        if (!found || found !== node.title) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    const sameEdges = (previous, next) => {
+      if (next.length !== previous.length) {
+        return false;
+      }
+
+      const set = new Set();
+      for (const edge of previous) {
+        set.add(`${edge.source.id}-${edge.target.id}`);
+      }
+
+      for (const edge of next) {
+        if (!set.has(`${edge.source}-${edge.target}`)) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    const graphWrapper = document.getElementById('graph-wrapper')
+    const element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    element.setAttribute("width", graphWrapper.getBoundingClientRect().width);
+    element.setAttribute("height", window.innerHeight * 0.8);
+    graphWrapper.appendChild(element);
+
+    const reportWindowSize = () => {
+      element.setAttribute("width", window.innerWidth);
+      element.setAttribute("height", window.innerHeight);
+    };
+
+    window.onresize = reportWindowSize;
+
+    const svg = d3.select("svg");
+    const width = Number(svg.attr("width"));
+    const height = Number(svg.attr("height"));
+    let zoomLevel = 1;
+
+    const simulation = d3
+      .forceSimulation(nodesData)
+      .force("forceX", d3.forceX().x(width / 2))
+      .force("forceY", d3.forceY().y(height / 2))
+      .force("charge", d3.forceManyBody())
+      .force(
+        "link",
+        d3
+          .forceLink(linksData)
+          .id((d) => d.id)
+          .distance(70)
+      )
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(80))
+      .stop();
+
+    const g = svg.append("g");
+    let link = g.append("g").attr("class", "links").selectAll(".link");
+    let node = g.append("g").attr("class", "nodes").selectAll(".node");
+    let text = g.append("g").attr("class", "text").selectAll(".text");
+
+    const resize = () => {
+      if (d3.event) {
+        const scale = d3.event.transform;
+        zoomLevel = scale.k;
+        g.attr("transform", scale);
+      }
+
+      const zoomOrKeep = (value) => (zoomLevel >= 1 ? value / zoomLevel : value);
+
+      const font = Math.max(Math.round(zoomOrKeep(FONT_SIZE)), 1);
+
+      text.attr("font-size", (d) => font);
+      text.attr("y", (d) => d.y - zoomOrKeep(FONT_BASELINE) + 8);
+      link.attr("stroke-width", zoomOrKeep(STROKE));
+      node.attr("r", (d) => {
+        return zoomOrKeep(nodeSize[d.id]);
+      });
+      svg
+        .selectAll("circle")
+        .filter((_d, i, nodes) => d3.select(nodes[i]).attr("active"))
+        .attr("r", (d) => zoomOrKeep(ACTIVE_RADIUS_FACTOR * nodeSize[d.id]));
+
+      document.getElementById("zoom").innerHTML = zoomLevel.toFixed(2);
+    };
+
+    const ticked = () => {
+      node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+      text
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y - (FONT_BASELINE - nodeSize[d.id]) / zoomLevel);
+      link
+        .attr("x1", (d) => d.source.x)
+        .attr("y1", (d) => d.source.y)
+        .attr("x2", (d) => d.target.x)
+        .attr("y2", (d) => d.target.y);
+    };
+
+    const restart = () => {
+      updateNodeSize();
+      node = node.data(nodesData, (d) => d.id);
+      node.exit().remove();
+      node = node
+        .enter()
+        .append("circle")
+        .attr("r", (d) => {
+          return nodeSize[d.id];
+        })
+        .on("click", onClick)
+        .on("mouseover", onMouseover)
+        .on("mouseout", onMouseout)
+        .merge(node);
+
+      link = link.data(linksData, (d) => `${d.source.id}-${d.target.id}`);
+      link.exit().remove();
+      link = link.enter().append("line").attr("stroke-width", STROKE).merge(link);
+
+      text = text.data(nodesData, (d) => d.label);
+      text.exit().remove();
+      text = text
+        .enter()
+        .append("text")
+        .text((d) => shorten(d.label.replace(/_*/g, ""), MAX_LABEL_LENGTH))
+        .attr("font-size", `${FONT_SIZE}px`)
+        .attr("text-anchor", "middle")
+        .attr("alignment-baseline", "central")
+        .on("click", onClick)
+        .on("mouseover", onMouseover)
+        .on("mouseout", onMouseout)
+        .merge(text);
+
+      node.attr("active", (d) => isCurrentPath(d.path) ? true : null);
+      text.attr("active", (d) => isCurrentPath(d.path) ? true : null);
+
+      simulation.nodes(nodesData);
+      simulation.force("link").links(linksData);
+      simulation.alpha(1).restart();
+      simulation.stop();
+
+      for (let i = 0; i < TICKS; i++) {
+        simulation.tick();
+      }
+
+      ticked();
+    };
+
+    const zoomHandler = d3.zoom().scaleExtent([0.2, 3]).on("zoom", resize);
+
+    zoomHandler(svg);
+    restart();
+
+    function isCurrentPath(notePath) {
+      return window.location.pathname.includes(notePath)
+    }
+
+    function shorten(str, maxLen, separator = ' ') {
+      if (str.length <= maxLen) return str;
+      return str.substr(0, str.lastIndexOf(separator, maxLen)) + '...';
+    }
+  </script>
+</div>
+</main>
+      <footer>These notes are always evolving. If these interest you, please <a class="internal-link" href="/garden/contact-me">get in touch</a>. You can learn more about me on my <a class="internal-link" href="/">website</a>.
+</footer>
+    </div>
+
+    <!-- That file is not particularly elegant. This will need a refactor at some point. -->
+<style>
+  content a.internal-link {
+    border-color: #8b88e6;
+    background-color: #efefff;
+  }
+
+  #tooltip-wrapper {
+    background: white;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    font-size: 0.8em;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 100ms;
+  }
+
+  #tooltip-wrapper:after {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		pointer-events: none;
+		background-image: linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
+		width: 100%;
+		height: 75px;
+  }
+</style>
+
+<div style="opacity: 0; display: none;" id='tooltip-wrapper'>
+  <div id='tooltip-content'>
+  </div>
+</div>
+
+<iframe style="display: none; height: 0; width: 0;" id='link-preview-iframe' src="">
+</iframe>
+
+<script>
+  var opacityTimeout;
+  var contentTimeout;
+  var transitionDurationMs = 100;
+
+  var iframe = document.getElementById('link-preview-iframe')
+  var tooltipWrapper = document.getElementById('tooltip-wrapper')
+  var tooltipContent = document.getElementById('tooltip-content')
+
+  function hideTooltip() {
+    opacityTimeout = setTimeout(function() {
+      tooltipWrapper.style.opacity = 0;
+      contentTimeout = setTimeout(function() {
+        tooltipContent.innerHTML = '';
+        tooltipWrapper.style.display = 'none';
+      }, transitionDurationMs + 1);
+    }, transitionDurationMs)
+  }
+
+  function showTooltip(event) {
+    var elem = event.target;
+    var elem_props = elem.getClientRects()[elem.getClientRects().length - 1];
+    var top = window.pageYOffset || document.documentElement.scrollTop
+
+    if (event.target.host === window.location.host) {
+      iframe.src = event.target.href
+      iframe.onload = function() {
+        tooltipContentHtml = ''
+        tooltipContentHtml += '<div style="font-weight: bold;">' + iframe.contentWindow.document.querySelector('h1').innerHTML + '</div>'
+        tooltipContentHtml += iframe.contentWindow.document.querySelector('content').innerHTML
+
+        tooltipContent.innerHTML = tooltipContentHtml
+
+        tooltipWrapper.style.display = 'block';
+        setTimeout(function() {
+          tooltipWrapper.style.opacity = 1;
+        }, 1)
+      }
+
+      tooltipWrapper.style.left = elem_props.left - (tooltipWrapper.offsetWidth / 2) + (elem_props.width / 2) + "px";
+      if ((window.innerHeight - elem_props.top) < (tooltipWrapper.offsetHeight)) {
+          tooltipWrapper.style.top = elem_props.top + top - tooltipWrapper.offsetHeight - 10 + "px";
+      } else if ((window.innerHeight - elem_props.top) > (tooltipWrapper.offsetHeight)) {
+          tooltipWrapper.style.top = elem_props.top + top + 35 + "px";
+      }
+
+      if ((elem_props.left + (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
+          tooltipWrapper.style.left = "10px";
+      } else if ((document.body.clientWidth - elem_props.left - (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
+          tooltipWrapper.style.left = document.body.clientWidth - tooltipWrapper.offsetWidth - 20 + "px";
+      }
+    }
+  }
+
+  function setupListeners(linkElement) {
+    linkElement.addEventListener('mouseleave', function(_event) {
+      hideTooltip();
+    });
+
+    tooltipWrapper.addEventListener('mouseleave', function(_event) {
+      hideTooltip();
+    });
+
+    linkElement.addEventListener('mouseenter', function(event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+      showTooltip(event);
+    });
+
+    tooltipWrapper.addEventListener('mouseenter', function(event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+    });
+  }
+
+  document.querySelectorAll('content a').forEach(setupListeners);
+</script>
+
+  </body>
+</html>
