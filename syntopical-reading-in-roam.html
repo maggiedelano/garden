@@ -25,7 +25,7 @@
   
 
   
-  <meta property="article:published_time" content="2022-02-22T23:19:54-05:00">
+  <meta property="article:published_time" content="2022-02-22T23:44:30-05:00">
   <meta property="article:author" content="https://www.maggiedelano.com/">
   
 
@@ -50,12 +50,12 @@
 <meta property="og:url" content="https://www.maggiedelano.com/garden/syntopical-reading-in-roam" />
 <meta property="og:site_name" content="Maggie Delano’s Digital Garden" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-22T23:19:54-05:00" />
+<meta property="article:published_time" content="2022-02-22T23:44:30-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Syntopical Reading in Roam" />
 <meta name="twitter:site" content="@maggied" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam"},"url":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam","headline":"Syntopical Reading in Roam","dateModified":"2022-02-22T23:19:53-05:00","datePublished":"2022-02-22T23:19:54-05:00","description":"Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Syntopical Reading in Roam","dateModified":"2022-02-22T23:34:51-05:00","datePublished":"2022-02-22T23:44:30-05:00","url":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam"},"description":"Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -69,7 +69,7 @@
       <main><article>
   <div>
     <h1>Syntopical Reading in Roam</h1>
-    <time datetime="2022-02-22T23:19:53-05:00">
+    <time datetime="2022-02-22T23:34:51-05:00">
       Last updated on February 22, 2022
       
     </time>
@@ -84,7 +84,7 @@
 <li class="toc-entry toc-h2"><a href="#inspectional-reading">Inspectional Reading</a></li>
 <li class="toc-entry toc-h2"><a href="#choosing-a-top-level-question">Choosing a Top Level Question</a></li>
 <li class="toc-entry toc-h2"><a href="#selecting-passages-coming-to-terms-getting-the-questions-clear">Selecting Passages, Coming to Terms, Getting the Questions Clear</a></li>
-<li class="toc-entry toc-h2"><a href="#defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the issues, Analyzing the Discussion, and Generating Our Own Ideas</a></li>
+<li class="toc-entry toc-h2"><a href="#defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the Issues, Analyzing the Discussion, and Generating Our Own Ideas</a></li>
 <li class="toc-entry toc-h2"><a href="#producing-output">Producing Output</a></li>
 </ul>
 </li>
@@ -160,7 +160,7 @@
 <h2 id="selecting-passages-coming-to-terms-getting-the-questions-clear">Selecting Passages, Coming to Terms, Getting the Questions Clear</h2>
 <p>Once a top level question has been identified, it’s time to prepare to read sections of the books in more detail. RBC members used their summarizations from the inspectional reading part, and additional skimming, to try to narrow down a few different passages to do a deeper reading of. They also identified and defined terms from the text or that they already knew that might be relevant. Examples included things like career capital, deliberate practice, and analogical thinking. Finally, each member identified supporting sub-questions, the answers to which would help support their “top-level” question. For example, for the question “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?”, sub-questions would include things like “What should someone just starting out in their career focus on?” or “What are some advantages of a liberal arts education?” Passages, terms, and questions can all be recorded and organized in any note taking system, but it helps if there’s clear ways to follow links between ideas.</p>
 
-<h2 id="defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the issues, Analyzing the Discussion, and Generating Our Own Ideas</h2>
+<h2 id="defining-the-issues-analyzing-the-discussion-and-generating-our-own-ideas">Defining the Issues, Analyzing the Discussion, and Generating Our Own Ideas</h2>
 <p>After the passages, terms, and questions have been selected, it’s time to do a deeper reading of each passage. The first step here is to take notes on the key arguments of each of the chapters, expressed as propositions (i.e. declarative statements or claims). For example, a proposition from Chapter 2 of <em>Range</em> might be “Anyone who wants a knowledge-career they love should get broad training.”</p>
 
 <p>Next, after you have a set of propositions, you want to answer your sub-questions using the propositions you’ve generated from each author. Compare how each author would answer the given sub-question, and then evaluate whether what the different authors are saying is (in)compatible with one another or not. If they disagree, where do they disagree? Using this information, you can generate your own ideas and conclusions, choosing to agree with one or more of the authors or even constructing a synthesis or totally new idea based on what you’ve read.</p>
@@ -168,7 +168,7 @@
 <p>As you answer each sub-question, you will learn more about your topic of interest, and can refine your passages, terms, and questions accordingly as you move toward answering your top-level question.</p>
 
 <h2 id="producing-output">Producing Output</h2>
-<p>At this stage, you will have a set of questions with answers. Depending on what you want to do with the answer to your top-level question, you could stop here. But writing down your ideas and communicating them with someone else is not only an excellent way to challenge your own thinking, it allows you to use what you’ve learned in a meaningful way. For example, both [myself]((https://www.maggiedelano.com/garden/unsolicited-career-advice) and RBC organizer <a href="https://katefoy.com/keep-your-hook-baited/" target="_blank">Kate Foy</a> decided to write blog posts about our findings.</p>
+<p>At this stage, you will have a set of questions with answers. Depending on what you want to do with the answer to your top-level question, you could stop here. But writing down your ideas and communicating them with someone else is not only an excellent way to challenge your own thinking, it allows you to use what you’ve learned in a meaningful way. For example, both <a href="https://www.maggiedelano.com/garden/unsolicited-career-advice" target="_blank">myself</a> and RBC organizer <a href="https://katefoy.com/keep-your-hook-baited/" target="_blank">Kate Foy</a> decided to write blog posts about our findings.</p>
 
 <p>Going from an outline in Roam/your note taking app to writing in prose also forces you to come up with supporting evidence, examples, and transitions between your ideas. I’ve found that the process of going from outliner to prose and back to outline can be very helpful in producing this sort of output.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">1</a></sup></p>
 
@@ -263,7 +263,7 @@
 </ul>
 
 <h3 id="example-template-partially-filled-in">Example Template, Partially Filled In</h3>
-<p>Here is an example of what a template might look like filled in, with some content omitted due to the levels of indentation and for brevity.</p>
+<p>Here is an example of what a template might look like filled in, with some content omitted due to the levels of indentation and for brevity. You can also see what this looks like in Roam in <a href="https://www.loom.com/share/bd635c2a394a409a9148812b642beed8" target="_blank">this Loom video</a>.</p>
 
 <ul>
   <li>[[Q/How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?]]
@@ -489,6 +489,11 @@
 <p>Thank you to everyone who helped organize and participated in this RBC, including Matt McKinlay, Mike Kramer, Kate Foy, Vincent Tam, Matt Brockwell, Chinarut Ruangchotvit, Naomi Peck, Brian Arrigo, Grigori Milov, Lindsey Johnston, Andy Henson, Beverly Hall, Jason Kleinberg, and many more.</p>
 
 <h1 id="footnotes">Footnotes</h1>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>add an EDN with link to the hivemind?</li>
+</ul>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:2" role="doc-endnote">
