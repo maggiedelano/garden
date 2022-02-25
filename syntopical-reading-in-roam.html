@@ -25,7 +25,7 @@
   
 
   
-  <meta property="article:published_time" content="2022-02-22T23:48:29-05:00">
+  <meta property="article:published_time" content="2022-02-24T21:38:29-05:00">
   <meta property="article:author" content="https://www.maggiedelano.com/">
   
 
@@ -50,12 +50,12 @@
 <meta property="og:url" content="https://www.maggiedelano.com/garden/syntopical-reading-in-roam" />
 <meta property="og:site_name" content="Maggie Delano’s Digital Garden" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-22T23:48:29-05:00" />
+<meta property="article:published_time" content="2022-02-24T21:38:29-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Syntopical Reading in Roam" />
 <meta name="twitter:site" content="@maggied" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam"},"url":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam","headline":"Syntopical Reading in Roam","dateModified":"2022-02-22T23:48:28-05:00","datePublished":"2022-02-22T23:48:29-05:00","description":"Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Syntopical Reading in Roam","dateModified":"2022-02-24T21:38:08-05:00","datePublished":"2022-02-24T21:38:29-05:00","url":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.maggiedelano.com/garden/syntopical-reading-in-roam"},"description":"Overview In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of So Good They Can’t Ignore You by Cal Newport and Range by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in [[Roam Research]]. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -69,8 +69,8 @@
       <main><article>
   <div>
     <h1>Syntopical Reading in Roam</h1>
-    <time datetime="2022-02-22T23:48:28-05:00">
-      Last updated on February 22, 2022
+    <time datetime="2022-02-24T21:38:08-05:00">
+      Last updated on February 24, 2022
       
     </time>
   </div>
@@ -78,7 +78,7 @@
   <div id="table-of-contents">
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#overview">Overview</a></li>
-<li class="toc-entry toc-h1"><a href="#introduction-to-synoptical-reading">Introduction to Synoptical Reading</a></li>
+<li class="toc-entry toc-h1"><a href="#introduction-to-syntoptical-reading">Introduction to Syntoptical Reading</a></li>
 <li class="toc-entry toc-h1"><a href="#implementing-syntopical-reading-tool-agnostic">Implementing Syntopical Reading (Tool Agnostic)</a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#inspectional-reading">Inspectional Reading</a></li>
@@ -116,7 +116,7 @@
 <h1 id="overview">Overview</h1>
 <p>In the sixth iteration of Roam Book Club (RBC), I led a group of Roam Book Club members through a syntopical reading of <a href="https://www.calnewport.com/books/so-good/" target="_blank">So Good They Can’t Ignore You</a> by Cal Newport and <a href="https://davidepstein.com/the-range/" target="_blank">Range</a> by David Epstein. Over the course of seven weeks, we inspected each book, came up with questions, terms, and propositions related to each book, and shared findings with each other during live breakout sessions and in a shared Roam Graph and group zettelkasten called the “Hivemind.” In this post I’ll introduce syntopical reading, discuss how syntopical reading can be implemented in a tool agnostic way, and then discuss how I set up the implementation of syntopical reading in <a class="internal-link" href="/garden/roam-research">Roam Research</a>. I’ll also cover how my implementation of syntopical reading can be used to create a group zettelkasten we in RBC are calling the Hivemind.</p>
 
-<h1 id="introduction-to-synoptical-reading">Introduction to Synoptical Reading</h1>
+<h1 id="introduction-to-syntoptical-reading">Introduction to Syntoptical Reading</h1>
 <p>There are a lot of reasons why people read books and join book clubs, including for entertainment, to learn something, and to answer your own questions (i.e. research of some kind). Each reason calls for a different approach to reading and writing about the book. Where most book clubs focus on reading for fun or to learn something from the author, this book club focused on a technique called syntopical reading to help us use our two books to answer our own questions. The two books (<em>So Good They Can’t Ignore You</em> and <em>Range</em>) were chosen after I listened to a <a href="https://www.buzzsprout.com/1121972/6035176" target="_blank">podcast</a> by the two authors where they talk about how many people think their ideas about having a successful career are contradictory, but that they themselves see synergies. It seemed like a great way to try our hand at evaluating each book and using each book to answer our own questions.</p>
 
 <p>The workflow for syntopical reading is described in Chapter 20 of <a href="https://en.wikipedia.org/wiki/How_to_Read_a_Book" target="_blank">How To Read A Book</a> by Mortimer J. Adler and Charles Van Doren. I adapted this workflow for use in RBC. The steps of syntopical reading included:</p>
@@ -155,7 +155,7 @@
 <p>We began with inspecting each book before each person knew exactly what they might be interested in exploring further, which is a little different than how one might implement this for research purposes. We also limited our reading to two books due to time constraints for the book club. However, even when working on one’s own there will always be some tension between understanding what one wants to research and needing to read to refine the topic. This is a paradox that the authors of <em>How To Read A Book</em> say we will just have to accept and iterate on as we inspect further sources.</p>
 
 <h2 id="choosing-a-top-level-question">Choosing a Top Level Question</h2>
-<p>After the inspectional reading was completed, RBC members were encouraged to brainstorm a “top level question” that they were interested in exploring for the rest of the book club. Though the authors of <em>How To Read A Book</em> focus on a “topic” for syntopical reading, I thought it made more sense to have a question to focus on as it forces you to refine your thinking a bit. Top level questions were things that could feasibly be answered (at least in part) by both books. My question, for example, was: “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?” This brainstorming doesn’t require any particular tool to conduct; you can free-write, list ideas with bullet points, use a mind mapping tool, go for a walk and record your ideas, etc.</p>
+<p>After the inspectional reading was completed, RBC members were encouraged to brainstorm a “top level question” that they were interested in exploring for the rest of the book club. Though the authors of <em>How To Read A Book</em> focus on a “topic” for syntopical reading, I thought it made more sense to have a question to focus on as it forces you to refine your thinking a bit.<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">1</a></sup> Top level questions were things that could feasibly be answered (at least in part) by both books. My question, for example, was: “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?” This brainstorming doesn’t require any particular tool to conduct; you can free-write, list ideas with bullet points, use a mind mapping tool, go for a walk and record your ideas, etc.</p>
 
 <h2 id="selecting-passages-coming-to-terms-getting-the-questions-clear">Selecting Passages, Coming to Terms, Getting the Questions Clear</h2>
 <p>Once a top level question has been identified, it’s time to prepare to read sections of the books in more detail. RBC members used their summarizations from the inspectional reading part, and additional skimming, to try to narrow down a few different passages to do a deeper reading of. They also identified and defined terms from the text or that they already knew that might be relevant. Examples included things like career capital, deliberate practice, and analogical thinking. Finally, each member identified supporting sub-questions, the answers to which would help support their “top-level” question. For example, for the question “How can I help my students lead successful careers that leverage their general engineering degree and liberal arts education?”, sub-questions would include things like “What should someone just starting out in their career focus on?” or “What are some advantages of a liberal arts education?” Passages, terms, and questions can all be recorded and organized in any note taking system, but it helps if there’s clear ways to follow links between ideas.</p>
@@ -170,7 +170,7 @@
 <h2 id="producing-output">Producing Output</h2>
 <p>At this stage, you will have a set of questions with answers. Depending on what you want to do with the answer to your top-level question, you could stop here. But writing down your ideas and communicating them with someone else is not only an excellent way to challenge your own thinking, it allows you to use what you’ve learned in a meaningful way. For example, both <a href="https://www.maggiedelano.com/garden/unsolicited-career-advice" target="_blank">myself</a> and RBC organizer <a href="https://katefoy.com/keep-your-hook-baited/" target="_blank">Kate Foy</a> decided to write blog posts about our findings.</p>
 
-<p>Going from an outline in Roam/your note taking app to writing in prose also forces you to come up with supporting evidence, examples, and transitions between your ideas. I’ve found that the process of going from outliner to prose and back to outline can be very helpful in producing this sort of output.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">1</a></sup></p>
+<p>Going from an outline in Roam/your note taking app to writing in prose also forces you to come up with supporting evidence, examples, and transitions between your ideas. I’ve found that the process of going from outliner to prose and back to outline can be very helpful in producing this sort of output.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
 
 <h1 id="implementing-syntopical-reading-roam-workflow">Implementing Syntopical Reading (Roam Workflow)</h1>
 
@@ -475,7 +475,7 @@
 </ul>
 
 <h2 id="the-hivemind-creating-a-group-zettelkasten">The Hivemind: Creating A Group Zettelkasten</h2>
-<p>Part of the beauty of using questions, terms, and propositions with fixed templates is that now a group zettelkasten can be created for everyone in the book club to benefit from the notes of others. RBC members who were interested in participating used the namespaces <code class="language-plaintext highlighter-rouge">T/</code>, <code class="language-plaintext highlighter-rouge">Q/</code> or <code class="language-plaintext highlighter-rouge">P/</code> before pages with terms, questions, or propositions, respectively to indicate the contents (e.g. <code class="language-plaintext highlighter-rouge">[[T/fermi thinking]]</code>) and that they were willing to share their work with the broader group. Then, I wrote <a href="https://github.com/maggiedelano/roambookclub/blob/main/getMissingNotes.js" target="_blank">custom code</a> to query for all pages within the appropriate name space and manually populated index pages that organized all the terms, questions, and propositions for easy browsing.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">2</a></sup></p>
+<p>Part of the beauty of using questions, terms, and propositions with fixed templates is that now a group zettelkasten can be created for everyone in the book club to benefit from the notes of others. RBC members who were interested in participating used the namespaces <code class="language-plaintext highlighter-rouge">T/</code>, <code class="language-plaintext highlighter-rouge">Q/</code> or <code class="language-plaintext highlighter-rouge">P/</code> before pages with terms, questions, or propositions, respectively to indicate the contents (e.g. <code class="language-plaintext highlighter-rouge">[[T/fermi thinking]]</code>) and that they were willing to share their work with the broader group. Then, I wrote <a href="https://github.com/maggiedelano/roambookclub/blob/main/getMissingNotes.js" target="_blank">custom code</a> to query for all pages within the appropriate name space and manually populated index pages that organized all the terms, questions, and propositions for easy browsing.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">3</a></sup></p>
 
 <p>Each of the pages had a discussion section that members could use to communicate with each other. It was very cool to get to see what everyone’s questions were, and how many different terms wound up meaning close to the same thing. The Hivemind is definitely something RBC wants to explore in the future.</p>
 
@@ -492,6 +492,9 @@
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
+    <li id="fn:3" role="doc-endnote">
+      <p>I think a focus on topic makes sense when you are totally new to an area you are researching, where you might not know enough to even formulate good questions, but the sooner you get to questions the better. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
     <li id="fn:2" role="doc-endnote">
       <p>If you are interested in this workflow you can check out a <a href="https://www.loom.com/share/bd635c2a394a409a9148812b642beed8" target="_blank">Loom video</a> I recorded during the book club that discusses how I go back and forth between an outline in Roam to prose in <a href="https://obsidian.md/" target="_blank">Obsidian</a> as I write. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
